@@ -155,6 +155,7 @@ const then_itReturnsAnIterableOfTypeStringWhereEachValueCorrespondsToNodes = (it
       expectedValue = thirdNodeValue;
     }
     assertEquals(next.value!.value, expectedValue);
+    stepCounter++;
   }
 }
 
@@ -165,6 +166,5 @@ Deno.test("LinkedList iteration", () => {
     thirdNodeValue: "third node"
   };
   const linkedList: LinkedList = given_linkedList_containsThreeNestedNodes(nodeValues);
-//  const iteration: Iterator<ListNode> = when_iterate_methodIsCalled(linkedList);
   then_itReturnsAnIterableOfTypeStringWhereEachValueCorrespondsToNodes(linkedList, nodeValues);
 });

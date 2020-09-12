@@ -1,8 +1,3 @@
-export interface Iterator<T> {
-  next(value?: any): IteratorResult<T>;
-  return?(value?: any): IteratorResult<T>;
-  throw?(e?: any): IteratorResult<T>;
-}
 export interface IteratorResult<T> {
   done: boolean;
   value: T;
@@ -46,15 +41,12 @@ export class LinkedList implements IterableIterator<ListNode | null> {
  } 
 
  public next():IteratorResult<ListNode | null> {
-   const currentIteration: ListNode | null = this.currentIteration ?? null;
-   if (currentIteration) {
+   if (this.currentIteration !== null) {
     const nextIteration = {
       done: false,
-      value: {...currentIteration}
+      value: {...this.currentIteration}
     };
-    console.log(nextIteration);
-    this.currentIteration = this.currentIteration!.next ?? null;
-    console.log(nextIteration);
+    this.currentIteration = this.currentIteration.next ?? null;
     return nextIteration;
    } else {
     this.currentIteration = this.head;
